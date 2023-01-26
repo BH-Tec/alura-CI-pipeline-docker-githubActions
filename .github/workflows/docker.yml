@@ -23,5 +23,5 @@ jobs:
       with:
         context: .
         file: ./Dockerfile
-        push: trues
+        push: true
         tags: brunooooooohenri/go_ci:${{ github.ref_name }} 
