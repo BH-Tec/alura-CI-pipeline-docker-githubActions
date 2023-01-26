@@ -1,5 +1,5 @@
 <h1 align="center">
-  Integração Contínua: Pipeline Docker no Github Actions
+  Curso de Formação de Integração Contínua e Entrega Contínua
 </h1>
 
 <p align="center">
@@ -14,7 +14,11 @@
 
 ## 💻 Projetos
 
-Repositório para o curso de "Integração Contínua: Pipeline Docker no Github Actions" da Alura.
+Repositório para os cursos da formação de "Integração Contínua e Entrega Contínua" da Alura.
+
+- Integração Contínua: testes automatizados e pipeline no Github Actions
+- Integração Contínua: Pipeline Docker no Github Actions
+- Integração Contínua: Pipeline de entrega e implementação contínua na EC2
 
 ## 🚀 Tecnologias
 
