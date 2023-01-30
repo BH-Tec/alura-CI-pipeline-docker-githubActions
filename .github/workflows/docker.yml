@@ -10,21 +10,21 @@ jobs:
     steps:
     - uses: actions/checkout@v3
 
-    - name: Setup Docker Build
+    - name: configurando docker build
       uses: docker/setup-buildx-action@v2.0.0
 
-    - name: Download a Build Artifact
+    - name: download do build artifact
       uses: actions/download-artifact@v3.0.0
       with:
         name: programa
       
-    - name: Docker Login
+    - name: login no docker
       uses: docker/login-action@v2.0.0
       with:
         username: ${{ secrets.USER_DOCKER_HUB }}
         password: ${{ secrets.PASSWORD_DOCKER_HUB }}
 
-    - name: Build and push Docker images
+    - name: build e push da imagem no Docker
       uses: docker/build-push-action@v3.0.0
       with:
         context: .

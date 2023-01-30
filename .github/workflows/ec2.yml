@@ -10,12 +10,12 @@ jobs:
       steps:
       - uses: actions/checkout@v3
       
-      - name: Download a Build Artifact
+      - name: download do build artifact
         uses: actions/download-artifact@v3.0.0
         with:
           name: programa
 
-      - name: Deploy to Staging server
+      - name: iniciando deploy no servidor
         uses: easingthemes/ssh-deploy@main
         env:
           SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
@@ -24,7 +24,7 @@ jobs:
           TARGET: /home/${{ secrets.REMOTE_USER }}
           EXCLUDE: "postgres-data"
 
-      - name: executing remote ssh commands using password
+      - name: executando comandos ssh remotos usando senha
         uses: appleboy/ssh-action@v0.1.7
         with:
           host: ${{ secrets.REMOTE_HOST }}

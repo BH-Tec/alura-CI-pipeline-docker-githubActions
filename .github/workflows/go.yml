@@ -23,18 +23,18 @@ jobs:
     steps:
     - uses: actions/checkout@v3
 
-    - name: Set up Go
+    - name: configurando o Go
       uses: actions/setup-go@v3
       with:
         go-version: ${{ matrix.go_version }}
       
-    - name: Build DataBase
+    - name: construindo o db
       run: docker-compose build
       
-    - name: Create DataBase
+    - name: criando o db
       run: docker-compose up -d
 
-    - name: Test
+    - name: testando
       run: go test -v main_test.go 
 
   build:
@@ -45,7 +45,7 @@ jobs:
     - name: Build
       run: go build -v main.go
 
-    - name: Upload a Build Artifact
+    - name: carrengado o build artifact
       uses: actions/upload-artifact@v3.1.0
       with:
         name: programa
