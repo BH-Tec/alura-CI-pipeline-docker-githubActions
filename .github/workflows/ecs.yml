@@ -6,15 +6,14 @@ on:
 jobs:
 
   ecs:
-    runs-on: ubuntu-latest
-    steps:
-    - name: configurando credenciais da aws
+      runs-on: ubuntu-latest
+      steps:
+      - name: configurando credenciais da aws
       uses: aws-actions/configure-aws-credentials@v1
       with:
-      aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-      aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-      aws-region: us-east-2
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws-region: us-east-2
 
-    - name: obtendo arquivo da tarefa
-      run: aws ecs describe-task-definition --task-definition Tarefa-API-Go --query taskDefinition > task-definition.json
-
+      - name: obtendo arquivo da tarefa
+        run: aws ecs describe-task-definition --task-definition Tarefa-API-Go --query taskDefinition > task-definition.json
