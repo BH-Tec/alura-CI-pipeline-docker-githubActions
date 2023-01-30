@@ -56,7 +56,13 @@ jobs:
     uses: ./.github/workflows/docker.yml
     secrets: inherit
 
-  deploy_ec2:
-    needs: build
-    uses: ./.github/workflows/ec2.yml
+# Rotina do AWS EC2
+  # deploy_ec2:
+  #   needs: build
+  #   uses: ./.github/workflows/ec2.yml
+  #   secrets: inherit
+
+  deploy_ecs:
+    needs: docker
+    uses: ./.github/workflows/ecs.yml
     secrets: inherit
