@@ -43,3 +43,17 @@ jobs:
           service: Servico-API-Go
           cluster: API-Go-Dev
           wait-for-service-stability: true
+
+      # necessario retornar para criar o load balance
+      - name: requisição
+        continue-on-error: true
+        run: echo "REQUEST=0" >> $GITHUB_ENV ; sleep 30s ; wget LB-API-Go-1245125115.us-east-1.elb.amazonaws.com:8000/bruno || echo "REQUEST=1" >> $GITHUB_ENV
+
+      - name: rollback - deploy da definição da tarefa na Amazon ECS
+        if: ${{ env.REQUEST != 0 }}
+        uses: aws-actions/amazon-ecs-deploy-task-definition@v1
+        with:
+          task-definition: task-definition.json.old
+          service: Servico-API-Go
+          cluster: API-Go-Dev
+          wait-for-service-stability: true
