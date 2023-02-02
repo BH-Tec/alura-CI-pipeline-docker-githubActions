@@ -16,3 +16,21 @@ jobs:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: us-east-2
+
+      - name: clonando repositorio do github
+        run: git clone https://github.com/BH-Tec/alura-formacao-ci-cd-infra
+        
+      - name: hashiCorp - setup terraform
+        uses: hashicorp/setup-terraform@v2.0.3
+
+      - name: iniciando o terraform
+        run: terraform -chdir=alura-formacao-ci-cd-infra/env/Homolog init
+      
+      - name: destroi a infra já existente
+        run: terraform -chdir=alura-formacao-ci-cd-infra/env/Homolog destroy -auto-approve
+        
+      - name: criando uma nova estrutura do terraform
+        run: terraform -chdir=alura-formacao-ci-cd-infra/env/Homolog apply -auto-approve
+
+      - name: salvador a url do terraform
+        run: echo "$(terraform -chdir=alura-formacao-ci-cd-infra/env/Homolog output -raw IP_alb)"
