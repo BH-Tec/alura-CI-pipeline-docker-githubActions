@@ -20,6 +20,7 @@ Repositório para os cursos da formação de "Integração Contínua e Entrega C
 - Integração Contínua: Pipeline Docker no Github Actions
 - Integração Contínua: Pipeline de entrega e implementação contínua na EC2
 - Integração Contínua: automatize o deploy no Amazon ECS
+- Integração Contínua: Rollback e teste de carga
 
 ## 🚀 Tecnologias
 
