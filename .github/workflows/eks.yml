@@ -26,4 +26,10 @@ jobs:
       - name: iniciando o terraform
         run: terraform -chdir=alura-formacao-ci-cd-kubernetes/env/Homolog init
 
+      #
+      - name: remove o terraform e impede de criar novamente.
+        run: terraform -chdir=Infra_CI_Kubernetes/env/Homolog destroy -auto-approve
+      - run: return 1
+      #
+
       - run: terraform -chdir=alura-formacao-ci-cd-kubernetes/env/Homolog apply -auto-approve
