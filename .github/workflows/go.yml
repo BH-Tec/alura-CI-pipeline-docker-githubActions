@@ -56,19 +56,26 @@ jobs:
     uses: ./.github/workflows/docker.yml
     secrets: inherit
 
-  # Rotina do AWS EC2
+# Rotina do AWS EC2
   # deploy_ec2:
   #   needs: build
   #   uses: ./.github/workflows/ec2.yml
   #   secrets: inherit
 
-  deploy_ecs:
+# Rotina do AWS ECS
+  # deploy_ecs:
+  #   needs: docker
+  #   uses: ./.github/workflows/ecs.yml
+  #   secrets: inherit
+
+# Rotina do AWS EKS
+  deploy_eks:
     needs: docker
-    uses: ./.github/workflows/ecs.yml
+    uses: ./.github/workflows/eks.yml
     secrets: inherit
 
-  loadTest:
-    needs: docker
-    if: ${{ github.ref_name == 'main'  }}
-    uses: ./.github/workflows/loadTest.yml
-    secrets: inherit
+  # loadTest:
+  #   needs: docker
+  #   if: ${{ github.ref_name == 'main'  }}
+  #   uses: ./.github/workflows/loadTest.yml
+  #   secrets: inherit

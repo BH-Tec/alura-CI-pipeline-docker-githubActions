@@ -25,3 +25,5 @@ jobs:
 
       - name: iniciando o terraform
         run: terraform -chdir=alura-formacao-ci-cd-kubernetes/env/Homolog init
+
+      - run: terraform -chdir=alura-formacao-ci-cd-kubernetes/env/Homolog apply -auto-approve
