@@ -46,11 +46,22 @@ jobs:
 
       - run: kubectl get svc
 
-      - run: kubectl create secret generic dbhost --from-literal=HOST=${{ steps.URL.output.stdout }}
+      - run: kubectl delete secrets dbhost  --ignore-not-found
+      - run: kubectl create secret generic dbhost --from-literal=HOST=${{ steps.URL.outputs.stdout }}
+
+      - run: kubectl delete secrets dbport  --ignore-not-found
       - run: kubectl create secret generic dbport --from-literal=DBPORT=${{ secrets.DBPORT }}
+
+      - run: kubectl delete secrets dbuser  --ignore-not-found
       - run: kubectl create secret generic dbuser --from-literal=USER=${{ secrets.DBUSER }}
+
+      - run: kubectl delete secrets dbpassword  --ignore-not-found
       - run: kubectl create secret generic dbpassword --from-literal=PASSWORD=${{ secrets.DBPASSWORD }}
+
+      - run: kubectl delete secrets dbname  --ignore-not-found
       - run: kubectl create secret generic dbname --from-literal=DBNAME=${{ secrets.DBNAME }}
+
+      - run: kubectl delete secrets port  --ignore-not-found
       - run: kubectl create secret generic port --from-literal=PORT=8000
 
       - run: kubectl apply -f alura-formacao-ci-cd-kubernetes/go.yaml
