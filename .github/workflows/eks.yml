@@ -53,3 +53,4 @@ jobs:
       - run: kubectl create secret generic dbname --from-literal=DBNAME=${{ secrets.DBNAME }}
       - run: kubectl create secret generic port --from-literal=PORT=8000
 
+      - run: kubectl apply -f alura-formacao-ci-cd-kubernetes/go.yaml
